@@ -27,7 +27,8 @@ RUN set -xe \
         && rm -R hlstatsx/ \
         && chown -R www-data:www-data . \
         && docker-php-source delete \
-        && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $buildDeps
+        && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false $buildDeps \
+	&& a2enmod rewrite
 
 ENTRYPOINT ["docker-hlxce-entrypoint"]
 
